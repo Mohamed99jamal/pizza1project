@@ -30,7 +30,7 @@ class Page_intro extends StatelessWidget {
             height: 25,
           ),
           // image
-          Image.asset('lib/images/pizza1'),
+          Image.asset('lib/images/pizza1&&'),
 
           SizedBox(
             height: 25,
