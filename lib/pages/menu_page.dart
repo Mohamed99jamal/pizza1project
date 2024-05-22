@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'pizza_detaill_page.dart';
+
 class Menu_page extends StatefulWidget {
   const Menu_page({super.key});
 
@@ -20,6 +22,7 @@ class _Menu_pageState extends State<Menu_page> {
         name: 'Chicken Alfredo',
         price: 50.0,
         imagepath: 'lib/images/Chicken Alfredo.jpg',
+        desc: 'Crème fraiche, mozzarella, poulet mariné, champignons, origan',
         rating: '3.5'),
     // La 4 fromages
     Pizza(
@@ -27,6 +30,8 @@ class _Menu_pageState extends State<Menu_page> {
         name: 'La 4 fromages',
         price: 55.0,
         imagepath: 'lib/images/La 4 fromages.jpg',
+        desc:
+            'Sauce tomate, fromage américain, 2 couches de mozzarella, fromage feta et origan',
         rating: '3.8'),
     // La Fruits de Mer
     Pizza(
@@ -34,6 +39,8 @@ class _Menu_pageState extends State<Menu_page> {
         name: 'La Fruits de Mer',
         price: 60.0,
         imagepath: 'lib/images/La Fruits de Mer.jpg',
+        desc:
+            'Sauce tomate, mozzarella, crevettes, calamars, thon, olives noires, oignons',
         rating: '4.9'),
     // La Veggie
     Pizza(
@@ -41,6 +48,8 @@ class _Menu_pageState extends State<Menu_page> {
         name: 'La Veggie',
         price: 65.0,
         imagepath: 'lib/images/La Veggie.jpg',
+        desc:
+            'Sauce tomate, mozzarella, oignons, poivrons verts, champignons et olives noires',
         rating: '3'),
     // Poulet barbecue
     Pizza(
@@ -48,8 +57,21 @@ class _Menu_pageState extends State<Menu_page> {
         name: 'Poulet barbecue',
         price: 70.0,
         imagepath: 'lib/images/Poulet barbecue.jpg',
+        desc: 'Sauce barbecue, mozzarella, filet de poulet grillé et oignon',
         rating: '4.5'),
   ];
+
+  // navigate
+  void navigateToDetaill(int index) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PizzaDetaillPage(
+            pizza: pizzas[index],
+          ),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,9 +145,11 @@ class _Menu_pageState extends State<Menu_page> {
                       borderSide: BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(20)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 161, 84, 84)),
-                      borderRadius: BorderRadius.circular(20))),
+                    borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 161, 84, 84)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  hintText: "Search here ..."),
             ),
           ),
           const SizedBox(
@@ -152,7 +176,65 @@ class _Menu_pageState extends State<Menu_page> {
               itemCount: pizzas.length,
               itemBuilder: (context, index) => PizzaInfo(
                 pizza: pizzas[index],
+                onTap: () => navigateToDetaill(index),
               ),
+            ),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+
+          // popular pizza
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        'lib/images/La Veggie.jpg',
+                        height: 80,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //name
+                        Text(
+                          "La Veggie",
+                          style: GoogleFonts.dmSerifDisplay(fontSize: 20),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        //price
+                        Text(
+                          '65 DH',
+                          style: TextStyle(
+                            color: Colors.grey[700],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Icon(
+                  Icons.favorite_outline,
+                  color: Colors.grey,
+                  size: 28,
+                )
+              ],
             ),
           )
         ],

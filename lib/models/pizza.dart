@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class Pizza {
   int id;
-  String name, imagepath, rating;
+  String name, imagepath, rating, desc;
   double price;
 
   Pizza(
@@ -10,6 +10,7 @@ class Pizza {
       required this.name,
       required this.price,
       required this.imagepath,
+      required this.desc,
       required this.rating});
 
   int get _id => id;
@@ -17,5 +18,6 @@ class Pizza {
   double get _price => price;
   String get _imagepath => imagepath;
   String get _rating => rating;
+  String get _desc => desc;
 }
 // https://www.dominos.ma/fr/pages/order/menu#!/menu/category/entrees/ 
