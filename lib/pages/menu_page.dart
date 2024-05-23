@@ -3,6 +3,7 @@ import 'package:app1pizza/compenents/pizza_info.dart';
 import 'package:app1pizza/models/pizza.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'pizza_detaill_page.dart';
@@ -82,10 +83,13 @@ class _Menu_pageState extends State<Menu_page> {
         toolbarHeight: 70,
         leading: Padding(
           padding: const EdgeInsets.only(left: 40.0, top: 20),
-          child: Icon(
-            Icons.menu,
-            size: 40,
-            color: Color.fromARGB(255, 62, 177, 51),
+          child: IconButton(
+            onPressed: () => {},
+            icon: Icon(
+              Icons.menu_rounded,
+              size: 40,
+              color: Colors.grey[700],
+            ),
           ),
         ),
         title: Padding(
@@ -94,10 +98,24 @@ class _Menu_pageState extends State<Menu_page> {
             'PIZZA',
             style: GoogleFonts.merienda(
               fontSize: 25.0,
-              color: Color.fromARGB(255, 62, 177, 51),
+              color: Colors.grey[700],
             ),
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20, top: 19),
+            child: IconButton(
+                onPressed: () => {
+                      Navigator.pushNamed(context, '/cmndpage'),
+                    },
+                icon: Icon(
+                  Icons.shopping_cart_rounded,
+                  size: 40,
+                  color: Colors.grey[700],
+                )),
+          )
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -229,10 +247,13 @@ class _Menu_pageState extends State<Menu_page> {
                     ),
                   ],
                 ),
-                Icon(
-                  Icons.favorite_outline,
-                  color: Colors.grey,
-                  size: 28,
+                IconButton(
+                  onPressed: () => {},
+                  icon: Icon(
+                    Icons.favorite_outline,
+                    color: Colors.grey,
+                    size: 28,
+                  ),
                 )
               ],
             ),

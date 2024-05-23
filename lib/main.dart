@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/commands_page.dart';
 import 'pages/menu_page.dart';
 import 'pages/page_intro.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/intropage': (context) => const Page_intro(),
         '/menupage': (context) => const Menu_page(),
+        '/cmndpage': (context) => const Command_page(),
       },
     );
   }
